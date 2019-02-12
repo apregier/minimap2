@@ -450,8 +450,8 @@ function paf_call(args)
 			else if (m[1] == 's1:i') have_s1 = true;
 			else if (m[1] == 's2:i') have_s2 = true;
 		}
-		if (have_s1 && !have_s2) continue;
-		if (tp != null && (tp == 'S' || tp == 'i')) continue;
+		//if (have_s1 && !have_s2) continue;
+		//if (tp != null && (tp == 'S' || tp == 'i')) continue;
 		// compute regions covered by 1 contig
 		if (ctg != c1_ctg || x >= c1_end) {
 			if (c1_counted && c1_end > c1_start) {
