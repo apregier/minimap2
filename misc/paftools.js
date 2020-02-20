@@ -1649,7 +1649,7 @@ function paf_sam2paf(args)
 			else if (m[1] == "MD:Z") MD = m[2];
 			else if (m[1] == "cs:Z") cs_str = m[2];
 		}
-		if (t[9] == '*') MD = cs_str = null;
+		//if (t[9] == '*') MD = cs_str = null;
 		// infer various lengths from CIGAR
 		var clip = [0, 0], soft_clip = 0, I = [0, 0], D = [0, 0], M = 0, N = 0, mm = 0, have_M = false, have_ext = false, cigar = [];
 		while ((m = re.exec(t[5])) != null) {
@@ -1685,7 +1685,7 @@ function paf_sam2paf(args)
 		}
 		// parse MD
 		var cs = [];
-		if (MD != null && cs_str == null && t[9] != "*") {
+		if (MD != null && cs_str == null) {
 			var k = 0, cx = 0, cy = 0, mx = 0, my = 0; // cx: cigar ref position; cy: cigar query; mx: MD ref; my: MD query
 			while ((m = re_MD.exec(MD)) != null) {
 				if (m[2] != null) { // deletion from the reference
