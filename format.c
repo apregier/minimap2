@@ -495,7 +495,10 @@ void mm_write_sam3(kstring_t *s, const mm_idx_t *mi, const mm_bseq1_t *t, int se
 			if (t->qual) sam_write_sq(s, t->qual, t->l_seq, r->rev, 0);
 			else mm_sprintf_lite(s, "*");
 		} else if (flag & 0x100) {
-			mm_sprintf_lite(s, "*\t*");
+			sam_write_sq(s, t->seq, t->l_seq, r->rev, r->rev);
+			mm_sprintf_lite(s, "\t");
+			if (t->qual) sam_write_sq(s, t->qual, t->l_seq, r->rev, 0);
+			else mm_sprintf_lite(s, "*");
 		} else {
 			sam_write_sq(s, t->seq + r->qs, r->qe - r->qs, r->rev, r->rev);
 			mm_sprintf_lite(s, "\t");
